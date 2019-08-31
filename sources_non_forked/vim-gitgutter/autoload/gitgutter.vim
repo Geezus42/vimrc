@@ -25,8 +25,11 @@ function! gitgutter#process_buffer(bufnr, force) abort
 
   if gitgutter#utility#is_active(a:bufnr)
 
+<<<<<<< HEAD
     call s:setup_maps(a:bufnr)
 
+=======
+>>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
     if has('patch-7.4.1559')
       let l:Callback = function('gitgutter#process_buffer', [a:bufnr, a:force])
     else
@@ -108,12 +111,24 @@ endfunction
 
 " }}}
 
+<<<<<<< HEAD
 function! s:setup_maps(bufnr)
+=======
+function! gitgutter#setup_maps()
+>>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
   if !g:gitgutter_map_keys
     return
   endif
 
+<<<<<<< HEAD
   if gitgutter#utility#getbufvar(a:bufnr, 'mapped', 0)
+=======
+  " Note hasmapto() and maparg() operate on the current buffer.
+
+  let bufnr = bufnr('')
+
+  if gitgutter#utility#getbufvar(bufnr, 'mapped', 0)
+>>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
     return
   endif
 
@@ -124,7 +139,10 @@ function! s:setup_maps(bufnr)
     nmap <buffer> ]c <Plug>GitGutterNextHunk
   endif
 
-  if !hasmapto('<Plug>GitGutterStageHunk') && maparg('<Leader>hs', 'n') ==# ''
+  if !hasmapto('<Plug>GitGutterStageHunk', 'v') && maparg('<Leader>hs', 'x') ==# ''
+    xmap <buffer> <Leader>hs <Plug>GitGutterStageHunk
+  endif
+  if !hasmapto('<Plug>GitGutterStageHunk', 'n') && maparg('<Leader>hs', 'n') ==# ''
     nmap <buffer> <Leader>hs <Plug>GitGutterStageHunk
   endif
   if !hasmapto('<Plug>GitGutterUndoHunk') && maparg('<Leader>hu', 'n') ==# ''
@@ -147,7 +165,11 @@ function! s:setup_maps(bufnr)
     xmap <buffer> ac <Plug>GitGutterTextObjectOuterVisual
   endif
 
+<<<<<<< HEAD
   call gitgutter#utility#setbufvar(a:bufnr, 'mapped', 1)
+=======
+  call gitgutter#utility#setbufvar(bufnr, 'mapped', 1)
+>>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
 endfunction
 
 function! s:setup_path(bufnr, continuation)
@@ -170,7 +192,6 @@ endfunction
 
 function! s:clear(bufnr)
   call gitgutter#sign#clear_signs(a:bufnr)
-  call gitgutter#sign#remove_dummy_sign(a:bufnr, 1)
   call gitgutter#hunk#reset(a:bufnr)
   call s:reset_tick(a:bufnr)
   call gitgutter#utility#setbufvar(a:bufnr, 'path', '')

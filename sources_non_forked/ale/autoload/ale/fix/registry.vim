@@ -115,6 +115,11 @@ let s:default_registry = {
 \       'suggested_filetypes': ['scala'],
 \       'description': 'Fix Scala files using scalafmt',
 \   },
+\   'sorbet': {
+\       'function': 'ale#fixers#sorbet#Fix',
+\       'suggested_filetypes': ['ruby'],
+\       'description': 'Fix ruby files with srb tc --autocorrect.',
+\   },
 \   'standard': {
 \       'function': 'ale#fixers#standard#Fix',
 \       'suggested_filetypes': ['javascript'],
@@ -209,6 +214,11 @@ let s:default_registry = {
 \       'function': 'ale#fixers#brittany#Fix',
 \       'suggested_filetypes': ['haskell'],
 \       'description': 'Fix Haskell files with brittany.',
+\   },
+\   'hindent': {
+\       'function': 'ale#fixers#hindent#Fix',
+\       'suggested_filetypes': ['haskell'],
+\       'description': 'Fix Haskell files with hindent.',
 \   },
 \   'hlint': {
 \       'function': 'ale#fixers#hlint#Fix',
@@ -320,6 +330,14 @@ let s:default_registry = {
 \       'suggested_filetypes': ['python'],
 \       'description': 'Sort Python imports with reorder-python-imports.',
 \   },
+<<<<<<< HEAD
+=======
+\   'gnatpp': {
+\       'function': 'ale#fixers#gnatpp#Fix',
+\       'suggested_filetypes': ['ada'],
+\       'description': 'Format Ada files with gnatpp.',
+\   },
+>>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
 \}
 
 " Reset the function registry to the default entries.

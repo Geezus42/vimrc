@@ -60,7 +60,8 @@ let s:omni_start_map = {
 \   '<default>': '\v[a-zA-Z$_][a-zA-Z$_0-9]*$',
 \}
 
-" A map of exact characters for triggering LSP completions.
+" A map of exact characters for triggering LSP completions. Do not forget to
+" update self.input_patterns in ale.py in updating entries in this map.
 let s:trigger_character_map = {
 \   '<default>': ['.'],
 \   'typescript': ['.', '''', '"'],
@@ -217,6 +218,13 @@ function! ale#completion#GetCompletionPosition() abort
     return l:column - len(l:match) - 1
 endfunction
 
+<<<<<<< HEAD
+=======
+function! ale#completion#GetCompletionPositionForDeoplete(input) abort
+    return match(a:input, '\k*$')
+endfunction
+
+>>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
 function! ale#completion#GetCompletionResult() abort
     if exists('b:ale_completion_result')
         return b:ale_completion_result
@@ -262,6 +270,14 @@ function! ale#completion#Show(result) abort
         \   {-> ale#util#FeedKeys("\<Plug>(ale_show_completion_menu)")}
         \)
     endif
+
+    if l:source is# 'ale-callback'
+        call b:CompleteCallback(b:ale_completion_result)
+    endif
+endfunction
+
+function! ale#completion#GetAllTriggers() abort
+    return deepcopy(s:trigger_character_map)
 endfunction
 
 function! s:CompletionStillValid(request_id) abort
@@ -275,6 +291,10 @@ function! s:CompletionStillValid(request_id) abort
     \   b:ale_completion_info.column == l:column
     \   || b:ale_completion_info.source is# 'deoplete'
     \   || b:ale_completion_info.source is# 'ale-omnifunc'
+<<<<<<< HEAD
+=======
+    \   || b:ale_completion_info.source is# 'ale-callback'
+>>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
     \)
 endfunction
 
@@ -555,12 +575,29 @@ endfunction
 
 " This function can be used to manually trigger autocomplete, even when
 " g:ale_completion_enabled is set to false
-function! ale#completion#GetCompletions(source) abort
+function! ale#completion#GetCompletions(...) abort
+    let l:source = get(a:000, 0, '')
+    let l:options = get(a:000, 1, {})
+
+    if len(a:000) > 2
+        throw 'Too many arguments!'
+    endif
+
+    let l:CompleteCallback = get(l:options, 'callback', v:null)
+
+    if l:CompleteCallback isnot v:null
+        let b:CompleteCallback = l:CompleteCallback
+    endif
+
     let [l:line, l:column] = getpos('.')[1:2]
 
     let l:prefix = ale#completion#GetPrefix(&filetype, l:line, l:column)
 
+<<<<<<< HEAD
     if a:source is# 'ale-automatic' && empty(l:prefix)
+=======
+    if l:source is# 'ale-automatic' && empty(l:prefix)
+>>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
         return 0
     endif
 
@@ -573,7 +610,7 @@ function! ale#completion#GetCompletions(source) abort
     \   'prefix': l:prefix,
     \   'conn_id': 0,
     \   'request_id': 0,
-    \   'source': a:source,
+    \   'source': l:source,
     \}
     unlet! b:ale_completion_result
 

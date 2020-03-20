@@ -19,11 +19,17 @@ IMPROVEMENTS:
 * Improve the user experience when using null modules.
   [[GH-2300]](https://github.com/fatih/vim-go/pull/2300)
 <<<<<<< HEAD
+<<<<<<< HEAD
 * Add a new option, `g:go_null_module_warning` to silence the warning when
   trying to use gopls with a null module.
   [[GH-2309]](https://github.com/fatih/vim-go/pull/2309)
 =======
 >>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
+=======
+* Add a new option, `g:go_null_module_warning` to silence the warning when
+  trying to use gopls with a null module.
+  [[GH-2309]](https://github.com/fatih/vim-go/pull/2309)
+>>>>>>> master
 * Modify `:GoReportGitHubIssue` to include vim-go configuration values
   [[GH-2323]](https://github.com/fatih/vim-go/pull/2323)
 * Respect `g:go_info_mode='gopls'` in go#complete#GetInfo.
@@ -36,20 +42,27 @@ IMPROVEMENTS:
   for godoc in Vim 8.1.1513 and later.
   [[GH-2347]](https://github.com/fatih/vim-go/pull/2347)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> master
 * Check for null modules in the background when initializing gopls.
   [[GH-2351]](https://github.com/fatih/vim-go/pull/2351)
 * Add `:GoAddWorkspace` function to support multiple workspaces with gopls.
   [[GH-2356]](https://github.com/fatih/vim-go/pull/2356)
 * Rename `errn` Ultisnip snippet to `err`.
   [[GH-2358]](https://github.com/fatih/vim-go/pull/2358)
+<<<<<<< HEAD
 =======
 * Add `:GoAddWorkspace` function to support multiple workspaces with gopls.
   [[GH-2356]](https://github.com/fatih/vim-go/pull/2356)
 >>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
+=======
+>>>>>>> master
 * Install gopls from its stable package.
   [[GH-2360]](https://github.com/fatih/vim-go/pull/2360)
 * Disambiguate progress message when initializing gopls.
   [[GH-2369]](https://github.com/fatih/vim-go/pull/2369)
+<<<<<<< HEAD
 <<<<<<< HEAD
 * Remove warnings and lsp short-circuiting when using a null module.
   [[GH-2371]](https://github.com/fatih/vim-go/pull/2371)
@@ -79,6 +92,10 @@ IMPROVEMENTS:
 * Reset `'more'` while installing binaries to avoid unnecessary more prompts.
   [[GH-2457]](https://github.com/fatih/vim-go/pull/2457)
 >>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
+=======
+* Remove warnings and lsp short-circuiting when using a null module.
+  [[GH-2371]](https://github.com/fatih/vim-go/pull/2371)
+>>>>>>> master
 
 BUG FIXES:
 * display info about function and function types whose parameters are
@@ -124,6 +141,7 @@ BUG FIXES:
   `golangci-lint`.
   [[GH-2367]](https://github.com/fatih/vim-go/pull/2367)
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 * Fix `:GoDebugRestart`.
   [[GH-2390]](https://github.com/fatih/vim-go/pull/2390)
@@ -138,6 +156,8 @@ BUG FIXES:
   the file being written is not the current file.
   [[GH-2442]](https://github.com/fatih/vim-go/pull/2401)
 >>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
+=======
+>>>>>>> master
 
 ## 1.20 - (April 22, 2019)
 

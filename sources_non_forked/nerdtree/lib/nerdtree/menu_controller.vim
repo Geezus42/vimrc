@@ -39,7 +39,11 @@ function! s:MenuController.showMenu()
             else
                 redraw!
             endif
+<<<<<<< HEAD
 >>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
+=======
+>>>>>>> 27ad0d07862847896f691309a544a206783c94d6
+>>>>>>> master
             call self._echoPrompt()
 
             let l:key = nr2char(getchar())
@@ -48,13 +52,13 @@ function! s:MenuController.showMenu()
     finally
         call self._restoreOptions()
 
-        " Redraw when "Ctrl-C" or "Esc" is received.
-        if !l:done || self.selection == -1
+        " Redraw when Ctrl-C or Esc is received.
+        if !l:done || self.selection ==# -1
             redraw!
         endif
     endtry
 
-    if self.selection != -1
+    if self.selection !=# -1
         let l:m = self._current()
         call l:m.execute()
     endif
@@ -62,24 +66,25 @@ endfunction
 
 "FUNCTION: MenuController._echoPrompt() {{{1
 function! s:MenuController._echoPrompt()
-    let navHelp = "Use " . g:NERDTreeMenuDown . "/" . g:NERDTreeMenuUp . "/enter"
+    let navHelp = 'Use ' . g:NERDTreeMenuDown . '/' . g:NERDTreeMenuUp . '/enter'
 
     if self.isMinimal()
         let selection = self.menuItems[self.selection].text
+        let keyword = matchstr(selection, '[^ ]*([^ ]*')
 
         let shortcuts = map(copy(self.menuItems), "v:val['shortcut']")
-        let shortcuts[self.selection] = " " . split(selection)[0] . " "
+        let shortcuts[self.selection] = ' ' . keyword . ' '
 
-        echo "Menu: [" . join(shortcuts, ",") . "] (" . navHelp . " or shortcut): "
+        echo 'Menu: [' . join(shortcuts, ',') . '] (' . navHelp . ' or shortcut): '
     else
-        echo "NERDTree Menu. " . navHelp . ", or the shortcuts indicated"
-        echo "========================================================="
+        echo 'NERDTree Menu. ' . navHelp . ', or the shortcuts indicated'
+        echo '========================================================='
 
         for i in range(0, len(self.menuItems)-1)
-            if self.selection == i
-                echo "> " . self.menuItems[i].text
+            if self.selection ==# i
+                echo '> ' . self.menuItems[i].text
             else
-                echo "  " . self.menuItems[i].text
+                echo '  ' . self.menuItems[i].text
             endif
         endfor
     endif
@@ -95,20 +100,20 @@ endfunction
 "change the selection (if appropriate) and return 1 if the user has made
 "their choice, 0 otherwise
 function! s:MenuController._handleKeypress(key)
-    if a:key == g:NERDTreeMenuDown
+    if a:key ==# g:NERDTreeMenuDown
         call self._cursorDown()
-    elseif a:key == g:NERDTreeMenuUp
+    elseif a:key ==# g:NERDTreeMenuUp
         call self._cursorUp()
-    elseif a:key == nr2char(27) "escape
+    elseif a:key ==# nr2char(27) "escape
         let self.selection = -1
         return 1
-    elseif a:key == "\r" || a:key == "\n" "enter and ctrl-j
+    elseif a:key ==# "\r" || a:key ==# "\n" "enter and ctrl-j
         return 1
     else
         let index = self._nextIndexFor(a:key)
-        if index != -1
+        if index !=# -1
             let self.selection = index
-            if len(self._allIndexesFor(a:key)) == 1
+            if len(self._allIndexesFor(a:key)) ==# 1
                 return 1
             endif
         endif
@@ -123,7 +128,7 @@ function! s:MenuController._allIndexesFor(shortcut)
     let toReturn = []
 
     for i in range(0, len(self.menuItems)-1)
-        if self.menuItems[i].shortcut == a:shortcut
+        if self.menuItems[i].shortcut ==# a:shortcut
             call add(toReturn, i)
         endif
     endfor
@@ -136,13 +141,13 @@ endfunction
 "current cursor location and wraps around to the top again if need be
 function! s:MenuController._nextIndexFor(shortcut)
     for i in range(self.selection+1, len(self.menuItems)-1)
-        if self.menuItems[i].shortcut == a:shortcut
+        if self.menuItems[i].shortcut ==# a:shortcut
             return i
         endif
     endfor
 
     for i in range(0, self.selection)
-        if self.menuItems[i].shortcut == a:shortcut
+        if self.menuItems[i].shortcut ==# a:shortcut
             return i
         endif
     endfor

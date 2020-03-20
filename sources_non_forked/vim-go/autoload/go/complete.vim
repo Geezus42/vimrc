@@ -264,12 +264,16 @@ function! go#complete#Complete(findstart, base) abort
   "findstart = 1 when we need to get the start of the match
   if a:findstart == 1
 <<<<<<< HEAD
+<<<<<<< HEAD
     let l:completion = go#lsp#Completion(expand('%:p'), line('.'), col('.'), funcref('s:handler', [l:state]))
 =======
     let [l:line, l:col] = getpos('.')[1:2]
     let [l:line, l:col] = go#lsp#lsp#Position(l:line, l:col)
     let l:completion = go#lsp#Completion(expand('%:p'), l:line, l:col, funcref('s:handler', [l:state]))
 >>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
+=======
+    let l:completion = go#lsp#Completion(expand('%:p'), line('.'), col('.'), funcref('s:handler', [l:state]))
+>>>>>>> master
     if l:completion
       return -3
     endif
@@ -287,10 +291,14 @@ function! go#complete#Complete(findstart, base) abort
     let s:completions = l:state.matches
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     return l:state.start
 =======
     return go#lsp#lsp#PositionOf(getline(l:line+1), l:state.start-1)
 >>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
+=======
+    return l:state.start
+>>>>>>> master
 
   else "findstart = 0 when we need to return the list of completions
     return s:completions

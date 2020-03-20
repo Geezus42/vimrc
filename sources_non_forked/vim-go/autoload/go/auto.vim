@@ -52,10 +52,14 @@ endfunction
 
 function! go#auto#fmt_autosave()
 <<<<<<< HEAD
+<<<<<<< HEAD
   if !go#config#FmtAutosave() || !isdirectory(expand('%:p:h'))
 =======
   if !(go#config#FmtAutosave() && isdirectory(expand('%:p:h')) && expand('<afile>:p') == expand('%:p'))
 >>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
+=======
+  if !go#config#FmtAutosave() || !isdirectory(expand('%:p:h'))
+>>>>>>> master
     return
   endif
 
@@ -74,10 +78,14 @@ endfunction
 
 function! go#auto#modfmt_autosave()
 <<<<<<< HEAD
+<<<<<<< HEAD
   if !go#config#ModFmtAutosave() || !isdirectory(expand('%:p:h'))
 =======
   if !(go#config#ModFmtAutosave() && isdirectory(expand('%:p:h')) && expand('<afile>:p') == expand('%:p'))
 >>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
+=======
+  if !go#config#ModFmtAutosave() || !isdirectory(expand('%:p:h'))
+>>>>>>> master
     return
   endif
 
@@ -87,10 +95,14 @@ endfunction
 
 function! go#auto#asmfmt_autosave()
 <<<<<<< HEAD
+<<<<<<< HEAD
   if !go#config#AsmfmtAutosave() || !isdirectory(expand('%:p:h'))
 =======
   if !(go#config#AsmfmtAutosave() && isdirectory(expand('%:p:h')) && expand('<afile>:p') == expand('%:p'))
 >>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
+=======
+  if !go#config#AsmfmtAutosave() || !isdirectory(expand('%:p:h'))
+>>>>>>> master
     return
   endif
 

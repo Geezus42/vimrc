@@ -29,7 +29,11 @@ function! gitgutter#process_buffer(bufnr, force) abort
     call s:setup_maps(a:bufnr)
 
 =======
+<<<<<<< HEAD
 >>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
+=======
+>>>>>>> 27ad0d07862847896f691309a544a206783c94d6
+>>>>>>> master
     if has('patch-7.4.1559')
       let l:Callback = function('gitgutter#process_buffer', [a:bufnr, a:force])
     else
@@ -44,7 +48,7 @@ function! gitgutter#process_buffer(bufnr, force) abort
 
       let diff = ''
       try
-        let diff = gitgutter#diff#run_diff(a:bufnr, 'index', 0)
+        let diff = gitgutter#diff#run_diff(a:bufnr, g:gitgutter_diff_relative_to, 0)
       catch /gitgutter not tracked/
         call gitgutter#debug#log('Not tracked: '.gitgutter#utility#file(a:bufnr))
       catch /gitgutter diff failed/
@@ -115,61 +119,81 @@ endfunction
 function! s:setup_maps(bufnr)
 =======
 function! gitgutter#setup_maps()
+<<<<<<< HEAD
 >>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
+=======
+>>>>>>> 27ad0d07862847896f691309a544a206783c94d6
+>>>>>>> master
   if !g:gitgutter_map_keys
     return
   endif
 
 <<<<<<< HEAD
   if gitgutter#utility#getbufvar(a:bufnr, 'mapped', 0)
+<<<<<<< HEAD
+=======
+    return
+  endif
+
+  if !hasmapto('<Plug>GitGutterPrevHunk') && maparg('[c', 'n') ==# ''
+    nmap <buffer> [c <Plug>GitGutterPrevHunk
+>>>>>>> master
 =======
   " Note hasmapto() and maparg() operate on the current buffer.
 
   let bufnr = bufnr('')
 
   if gitgutter#utility#getbufvar(bufnr, 'mapped', 0)
+<<<<<<< HEAD
 >>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
+=======
+>>>>>>> master
     return
   endif
 
-  if !hasmapto('<Plug>GitGutterPrevHunk') && maparg('[c', 'n') ==# ''
-    nmap <buffer> [c <Plug>GitGutterPrevHunk
+  if !hasmapto('<Plug>(GitGutterPrevHunk)') && maparg('[c', 'n') ==# ''
+    nmap <buffer> [c <Plug>(GitGutterPrevHunk)
+>>>>>>> 27ad0d07862847896f691309a544a206783c94d6
   endif
-  if !hasmapto('<Plug>GitGutterNextHunk') && maparg(']c', 'n') ==# ''
-    nmap <buffer> ]c <Plug>GitGutterNextHunk
-  endif
-
-  if !hasmapto('<Plug>GitGutterStageHunk', 'v') && maparg('<Leader>hs', 'x') ==# ''
-    xmap <buffer> <Leader>hs <Plug>GitGutterStageHunk
-  endif
-  if !hasmapto('<Plug>GitGutterStageHunk', 'n') && maparg('<Leader>hs', 'n') ==# ''
-    nmap <buffer> <Leader>hs <Plug>GitGutterStageHunk
-  endif
-  if !hasmapto('<Plug>GitGutterUndoHunk') && maparg('<Leader>hu', 'n') ==# ''
-    nmap <buffer> <Leader>hu <Plug>GitGutterUndoHunk
-  endif
-  if !hasmapto('<Plug>GitGutterPreviewHunk') && maparg('<Leader>hp', 'n') ==# ''
-    nmap <buffer> <Leader>hp <Plug>GitGutterPreviewHunk
+  if !hasmapto('<Plug>(GitGutterNextHunk)') && maparg(']c', 'n') ==# ''
+    nmap <buffer> ]c <Plug>(GitGutterNextHunk)
   endif
 
-  if !hasmapto('<Plug>GitGutterTextObjectInnerPending') && maparg('ic', 'o') ==# ''
-    omap <buffer> ic <Plug>GitGutterTextObjectInnerPending
+  if !hasmapto('<Plug>(GitGutterStageHunk)', 'v') && maparg('<Leader>hs', 'x') ==# ''
+    xmap <buffer> <Leader>hs <Plug>(GitGutterStageHunk)
   endif
-  if !hasmapto('<Plug>GitGutterTextObjectOuterPending') && maparg('ac', 'o') ==# ''
-    omap <buffer> ac <Plug>GitGutterTextObjectOuterPending
+  if !hasmapto('<Plug>(GitGutterStageHunk)', 'n') && maparg('<Leader>hs', 'n') ==# ''
+    nmap <buffer> <Leader>hs <Plug>(GitGutterStageHunk)
   endif
-  if !hasmapto('<Plug>GitGutterTextObjectInnerVisual') && maparg('ic', 'x') ==# ''
-    xmap <buffer> ic <Plug>GitGutterTextObjectInnerVisual
+  if !hasmapto('<Plug>(GitGutterUndoHunk)') && maparg('<Leader>hu', 'n') ==# ''
+    nmap <buffer> <Leader>hu <Plug>(GitGutterUndoHunk)
   endif
-  if !hasmapto('<Plug>GitGutterTextObjectOuterVisual') && maparg('ac', 'x') ==# ''
-    xmap <buffer> ac <Plug>GitGutterTextObjectOuterVisual
+  if !hasmapto('<Plug>(GitGutterPreviewHunk)') && maparg('<Leader>hp', 'n') ==# ''
+    nmap <buffer> <Leader>hp <Plug>(GitGutterPreviewHunk)
   endif
 
+  if !hasmapto('<Plug>(GitGutterTextObjectInnerPending)') && maparg('ic', 'o') ==# ''
+    omap <buffer> ic <Plug>(GitGutterTextObjectInnerPending)
+  endif
+  if !hasmapto('<Plug>(GitGutterTextObjectOuterPending)') && maparg('ac', 'o') ==# ''
+    omap <buffer> ac <Plug>(GitGutterTextObjectOuterPending)
+  endif
+  if !hasmapto('<Plug>(GitGutterTextObjectInnerVisual)') && maparg('ic', 'x') ==# ''
+    xmap <buffer> ic <Plug>(GitGutterTextObjectInnerVisual)
+  endif
+  if !hasmapto('<Plug>(GitGutterTextObjectOuterVisual)') && maparg('ac', 'x') ==# ''
+    xmap <buffer> ac <Plug>(GitGutterTextObjectOuterVisual)
+  endif
+
+<<<<<<< HEAD
 <<<<<<< HEAD
   call gitgutter#utility#setbufvar(a:bufnr, 'mapped', 1)
 =======
   call gitgutter#utility#setbufvar(bufnr, 'mapped', 1)
 >>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
+=======
+  call gitgutter#utility#setbufvar(bufnr, 'mapped', 1)
+>>>>>>> master
 endfunction
 
 function! s:setup_path(bufnr, continuation)
@@ -179,6 +203,19 @@ function! s:setup_path(bufnr, continuation)
     return
   endif
 
+<<<<<<< HEAD
+  call gitgutter#utility#setbufvar(a:bufnr, 'mapped', 1)
+endfunction
+
+function! s:setup_path(bufnr, continuation)
+  let p = gitgutter#utility#repo_path(a:bufnr, 0)
+
+  if type(p) == s:t_string && !empty(p)  " if path is known
+    return
+  endif
+
+=======
+>>>>>>> 27ad0d07862847896f691309a544a206783c94d6
   return gitgutter#utility#set_repo_path(a:bufnr, a:continuation)
 endfunction
 
@@ -195,4 +232,41 @@ function! s:clear(bufnr)
   call gitgutter#hunk#reset(a:bufnr)
   call s:reset_tick(a:bufnr)
   call gitgutter#utility#setbufvar(a:bufnr, 'path', '')
+<<<<<<< HEAD
+=======
+endfunction
+
+
+" Note:
+" - this runs synchronously
+" - it ignores unsaved changes in buffers
+" - it does not change to the repo root
+function! gitgutter#quickfix()
+  let locations = []
+  let cmd = g:gitgutter_git_executable.' '.g:gitgutter_git_args.' --no-pager '.g:gitgutter_git_args.
+        \ ' diff --no-ext-diff --no-color -U0 '.g:gitgutter_diff_args
+  let diff = systemlist(cmd)
+  let lnum = 0
+  for line in diff
+    if line =~ '^diff --git [^"]'
+      let paths = line[11:]
+      let mid = (len(paths) - 1) / 2
+      let [fnamel, fnamer] = [paths[:mid-1], paths[mid+1:]]
+      let fname = fnamel ==# fnamer ? fnamel : fnamel[2:]
+    elseif line =~ '^diff --git "'
+      let [_, fnamel, _, fnamer] = split(line, '"')
+      let fname = fnamel ==# fnamer ? fnamel : fnamel[2:]
+    elseif line =~ '^@@'
+      let lnum = matchlist(line, '+\(\d\+\)')[1]
+    elseif lnum > 0
+      call add(locations, {'filename': fname, 'lnum': lnum, 'text': line})
+      let lnum = 0
+    endif
+  endfor
+  if !g:gitgutter_use_location_list
+    call setqflist(locations)
+  else
+    call setloclist(0, locations)
+  endif
+>>>>>>> 27ad0d07862847896f691309a544a206783c94d6
 endfunction

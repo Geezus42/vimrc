@@ -2,21 +2,19 @@
 let s:cpo_save = &cpo
 set cpo&vim
 
-scriptencoding utf-8
-
 func! Test_jump_to_declaration_guru() abort
   try
     let l:filename = 'def/jump.go'
-    let l:lnum = 5
-    let l:col = 6
+    let lnum = 5
+    let col = 6
     let l:tmp = gotest#load_fixture(l:filename)
 
-    let l:guru_out = printf("%s:%d:%d: defined here as func main", l:filename, l:lnum, l:col)
-    call go#def#jump_to_declaration(l:guru_out, "", 'guru')
+    let guru_out = printf("%s:%d:%d: defined here as func main", filename, lnum, col)
+    call go#def#jump_to_declaration(guru_out, "", 'guru')
 
-    call assert_equal(l:filename, bufname("%"))
-    call assert_equal(l:lnum, getcurpos()[1])
-    call assert_equal(l:col, getcurpos()[2])
+    call assert_equal(filename, bufname("%"))
+    call assert_equal(lnum, getcurpos()[1])
+    call assert_equal(col, getcurpos()[2])
   finally
     call delete(l:tmp, 'rf')
   endtry
@@ -24,17 +22,17 @@ endfunc
 
 func! Test_jump_to_declaration_godef() abort
   try
-    let l:filename = 'def/jump.go'
-    let l:lnum = 5
-    let l:col = 6
+    let filename = 'def/jump.go'
+    let lnum = 5
+    let col = 6
     let l:tmp = gotest#load_fixture(l:filename)
 
-    let l:godef_out = printf("%s:%d:%d\ndefined here as func main", l:filename, l:lnum, l:col)
+    let godef_out = printf("%s:%d:%d\ndefined here as func main", filename, lnum, col)
     call go#def#jump_to_declaration(godef_out, "", 'godef')
 
-    call assert_equal(l:filename, bufname("%"))
-    call assert_equal(l:lnum, getcurpos()[1])
-    call assert_equal(l:col, getcurpos()[2])
+    call assert_equal(filename, bufname("%"))
+    call assert_equal(lnum, getcurpos()[1])
+    call assert_equal(col, getcurpos()[2])
   finally
     call delete(l:tmp, 'rf')
   endtry
@@ -42,13 +40,13 @@ endfunc
 
 func! Test_Jump_leaves_lists() abort
   try
-    let l:filename = 'def/jump.go'
+    let filename = 'def/jump.go'
     let l:tmp = gotest#load_fixture(l:filename)
 
-    let l:expected = [{'lnum': 10, 'bufnr': bufnr('%'), 'col': 1, 'valid': 1, 'vcol': 0, 'nr': -1, 'type': '', 'pattern': '', 'text': 'quux'}]
+    let expected = [{'lnum': 10, 'bufnr': bufnr('%'), 'col': 1, 'valid': 1, 'vcol': 0, 'nr': -1, 'type': '', 'pattern': '', 'text': 'quux'}]
 
-    call setloclist(winnr(), copy(l:expected), 'r' )
-    call setqflist(copy(l:expected), 'r' )
+    call setloclist(winnr(), copy(expected), 'r' )
+    call setqflist(copy(expected), 'r' )
 
     let l:bufnr = bufnr('%')
     call cursor(6, 7)
@@ -57,6 +55,9 @@ func! Test_Jump_leaves_lists() abort
       let g:go_def_mode='godef'
     endif
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> master
     call go#def#Jump('', 0)
 
     if !go#util#has_job()
@@ -65,6 +66,7 @@ func! Test_Jump_leaves_lists() abort
 
     let start = reltime()
     while bufnr('%') == l:bufnr && reltimefloat(reltime(start)) < 10
+<<<<<<< HEAD
 =======
     call go#def#Jump('', 0)
 
@@ -182,48 +184,18 @@ func! Test_DefJump_gopls_MultipleCodeUnit_first() abort
 
     let l:start = reltime()
     while getpos('.') != l:expected && reltimefloat(reltime(l:start)) < 10
+=======
+>>>>>>> master
       sleep 100m
     endwhile
 
-    call assert_equal(l:expected, getpos('.'))
+    let actual = getloclist(winnr())
+    call gotest#assert_quickfix(actual, expected)
+
+    let actual = getqflist()
+    call gotest#assert_quickfix(actual, expected)
   finally
     call delete(l:tmp, 'rf')
-    unlet g:go_def_mode
-  endtry
-endfunc
-
-
-func! Test_DefJump_gopls_MultipleCodeUnit_last() abort
-  if !go#util#has_job()
-    return
-  endif
-
-  try
-    let g:go_def_mode = 'gopls'
-
-    let l:tmp = gotest#write_file('multiplecodeunit/lastposition/lastposition.go', [
-          \ 'package lastposition',
-          \ '',
-          \ 'func Example() {',
-          \ "\t𐐀, id := " . '"foo", "bar"',
-          \ "\tprintln(" . '"(𐐀, id):", 𐐀, id)',
-          \ '}',
-          \ ] )
-
-    let l:expected = [0, 4, 8, 0]
-    call assert_notequal(l:expected, getpos('.'))
-
-    call go#def#Jump('', 0)
-
-    let l:start = reltime()
-    while getpos('.') != l:expected && reltimefloat(reltime(l:start)) < 10
-      sleep 100m
-    endwhile
-
-    call assert_equal(l:expected, getpos('.'))
-  finally
-    call delete(l:tmp, 'rf')
-    unlet g:go_def_mode
   endtry
 endfunc
 

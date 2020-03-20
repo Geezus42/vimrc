@@ -219,10 +219,8 @@ function! s:CloseWindowIfNeeded(buffer) abort
             for l:win_id in l:win_ids
                 if g:ale_set_loclist && empty(getloclist(l:win_id))
                     lclose
-<<<<<<< HEAD
-=======
                     let l:did_close_any_list = 1
->>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
+>>>>>>> master
                 endif
             endfor
         endif

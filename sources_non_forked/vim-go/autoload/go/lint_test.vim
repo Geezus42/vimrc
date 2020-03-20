@@ -58,10 +58,13 @@ func! s:gometaautosave(metalinter) abort
   let RestoreGOPATH = go#util#SetEnv('GOPATH', fnameescape(fnamemodify(getcwd(), ':p')) . 'test-fixtures/lint')
   silent exe 'e ' . $GOPATH . '/src/lint/lint.go'
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   try
     let g:go_metalinter_command = a:metalinter
 =======
+=======
+>>>>>>> master
 
   try
     let g:go_metalinter_command = a:metalinter
@@ -98,6 +101,7 @@ func! s:gometaautosave(metalinter) abort
 endfunc
 
 func! Test_Vet() abort
+<<<<<<< HEAD
   let l:tmp = gotest#load_fixture('lint/src/vet/vet.go')
 
   try
@@ -176,11 +180,15 @@ endfunc
 func! Test_Lint_NullModule() abort
   silent exe 'e ' . fnameescape(fnamemodify(getcwd(), ':p')) . 'test-fixtures/lint/src/lint/lint.go'
 >>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
+=======
+  let RestoreGOPATH = go#util#SetEnv('GOPATH', fnameescape(fnamemodify(getcwd(), ':p')) . 'test-fixtures/lint')
+  silent exe 'e ' . $GOPATH . '/src/vet/vet.go'
+>>>>>>> master
   compiler go
 
   let expected = [
-          \ {'lnum': 5, 'bufnr': bufnr('%'), 'col': 1, 'valid': 1, 'vcol': 0, 'nr': -1, 'type': '', 'pattern': '', 'text': 'exported function MissingDoc should have comment or be unexported'},
-          \ {'lnum': 5, 'bufnr': 6, 'col': 1, 'valid': 1, 'vcol': 0, 'nr': -1, 'type': '', 'pattern': '', 'text': 'exported function AlsoMissingDoc should have comment or be unexported'}
+        \ {'lnum': 7, 'bufnr': bufnr('%'), 'col': 2, 'valid': 1, 'vcol': 0, 'nr': -1, 'type': '', 'pattern': '',
+        \ 'text': 'Printf format %d has arg str of wrong type string'}
       \ ]
 
   let winnr = winnr()
@@ -188,7 +196,7 @@ func! Test_Lint_NullModule() abort
   " clear the location lists
   call setqflist([], 'r')
 
-  call go#lint#Golint(1)
+  call go#lint#Vet(1)
 
   let actual = getqflist()
   let start = reltime()

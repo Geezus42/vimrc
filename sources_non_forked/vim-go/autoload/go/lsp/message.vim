@@ -13,31 +13,37 @@ function! go#lsp#message#Initialize(wd) abort
               \ 'workspace': {
                 \ 'workspaceFolders': v:true,
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
                 \ 'didChangeConfiguration': {
                   \ 'dynamicRegistration': v:true,
                 \ },
                 \ 'configuration': v:true,
 >>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
+=======
+>>>>>>> master
               \ },
               \ 'textDocument': {
                 \ 'hover': {
                   \ 'contentFormat': ['plaintext'],
                 \ },
               \ }
-            \ },
-            \ 'workspaceFolders': [s:workspaceFolder(0, a:wd)],
+            \ }
           \ }
        \ }
 endfunction
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> master
 function! go#lsp#message#workspaceFolders(dirs) abort
   return map(copy(a:dirs), function('s:workspaceFolderToURI', []))
 endfunction
 
 function s:workspaceFolderToURI(key, val) abort
   return go#path#ToURI(a:val)
+<<<<<<< HEAD
 =======
 function! go#lsp#message#Initialized() abort
   return {
@@ -64,6 +70,8 @@ endfunction
 function! go#lsp#message#WorkspaceFoldersResult(dirs) abort
   return map(copy(a:dirs), function('s:workspaceFolder', []))
 >>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
+=======
+>>>>>>> master
 endfunction
 
 function! go#lsp#message#Definition(file, line, col) abort
@@ -162,6 +170,7 @@ function! go#lsp#message#Hover(file, line, col) abort
 endfunction
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function! go#lsp#message#AddWorkspaces(dirs) abort
   let l:dirs = map(copy(a:dirs), function('s:workspaceFodlerToAddURI', []))
 =======
@@ -169,6 +178,10 @@ function! go#lsp#message#ChangeWorkspaceFolders(add, remove) abort
   let l:addDirs = map(copy(a:add), function('s:workspaceFolder', []))
   let l:removeDirs = map(copy(a:add), function('s:workspaceFolder', []))
 >>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
+=======
+function! go#lsp#message#AddWorkspaces(dirs) abort
+  let l:dirs = map(copy(a:dirs), function('s:workspaceFodlerToAddURI', []))
+>>>>>>> master
 
   return {
           \ 'notification': 1,
@@ -176,17 +189,22 @@ function! go#lsp#message#ChangeWorkspaceFolders(add, remove) abort
           \ 'params': {
           \   'event': {
 <<<<<<< HEAD
+<<<<<<< HEAD
           \     'added': l:dirs,
 =======
           \     'removed': l:removeDirs,
           \     'added': l:addDirs,
 >>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
+=======
+          \     'added': l:dirs,
+>>>>>>> master
           \     },
           \ }
        \ }
 
 endfunction
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 function s:workspaceFolderToAddURI(key, val) abort
 =======
@@ -212,11 +230,14 @@ endfunction
 
 function s:workspaceFolder(key, val) abort
 >>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
+=======
+function s:workspaceFolderToAddURI(key, val) abort
+>>>>>>> master
   return {'uri': go#path#ToURI(a:val), 'name': a:val}
 endfunction
 
 function! s:position(line, col) abort
-  return {'line': a:line, 'character': a:col}
+  return {'line': a:line - 1, 'character': a:col-1}
 endfunction
 
 " restore Vi compatibility settings

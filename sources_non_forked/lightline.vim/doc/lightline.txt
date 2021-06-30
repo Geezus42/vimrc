@@ -255,6 +255,7 @@ OPTIONS						*lightline-option*
 		landscape, one, materia, material, OldHope, nord, deus,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		srcery_drk, ayu_mirage and 16color are available.
 <<<<<<< HEAD
 >>>>>>> 3aefdbd21a18d5b83e42eaf4dc722b0c5918f6f2
@@ -273,6 +274,12 @@ OPTIONS						*lightline-option*
 		simpleblack, srcery_drk, ayu_mirage, ayu_light, ayu_dark,
 		apprentice and 16color are available.
 >>>>>>> 597b7acdc0316524c7c65c79d4dc9bf3f5cfce70
+<<<<<<< HEAD
+=======
+=======
+		simpleblack, srcery_drk, ayu_mirage, ayu_light, ayu_dark,
+		apprentice and 16color are available.
+>>>>>>> master
 >>>>>>> master
 		The default value is:
 >

@@ -47,15 +47,26 @@ function! ale#floating_preview#Show(lines, ...) abort
         endif
     augroup END
 
+<<<<<<< HEAD
+    let l:width = max(map(copy(a:lines), 'strdisplaywidth(v:val)'))
+    let l:height = min([len(a:lines), 10])
+    call nvim_win_set_width(w:preview['id'], l:width)
+    call nvim_win_set_height(w:preview['id'], l:height)
+
+    call nvim_buf_set_lines(w:preview['buffer'], 0, -1, v:false, a:lines)
+=======
     let [l:lines, l:width, l:height] = s:PrepareWindowContent(a:lines)
 
     call nvim_win_set_width(w:preview['id'], l:width)
     call nvim_win_set_height(w:preview['id'], l:height)
     call nvim_buf_set_lines(w:preview['buffer'], 0, -1, v:false, l:lines)
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
     call nvim_buf_set_option(w:preview['buffer'], 'modified', v:false)
     call nvim_buf_set_option(w:preview['buffer'], 'modifiable', v:false)
 endfunction
 
+<<<<<<< HEAD
+=======
 function! s:PrepareWindowContent(lines) abort
     let l:max_height = 10
 
@@ -94,6 +105,7 @@ function! s:PrepareWindowContent(lines) abort
     return [l:lines, l:width, l:height]
 endfunction
 
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
 function! s:Create(options) abort
     let l:buffer = nvim_create_buf(v:false, v:false)
     let l:winid = nvim_open_win(l:buffer, v:false, {
@@ -113,9 +125,12 @@ function! s:Create(options) abort
 endfunction
 
 function! s:Close() abort
+<<<<<<< HEAD
+=======
     let l:mode = mode()
     let l:restore_visual = l:mode is# 'v' || l:mode is# 'V' || l:mode is# "\<C-V>"
 
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
     if !exists('w:preview')
         return
     endif
@@ -127,8 +142,13 @@ function! s:Close() abort
     endif
 
     unlet w:preview
+<<<<<<< HEAD
+endfunction
+
+=======
 
     if l:restore_visual
         normal! gv
     endif
 endfunction
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3

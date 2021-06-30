@@ -90,6 +90,9 @@ let g:ale_lint_on_filetype_changed = get(g:, 'ale_lint_on_filetype_changed', 1)
 " If set to 1, hints and suggestion from LSP servers and tsserver will be shown.
 let g:ale_lsp_suggestions = get(g:, 'ale_lsp_suggestions', 0)
 
+" If set to 1, hints and suggestion from LSP servers and tsserver will be shown.
+let g:ale_lsp_suggestions = get(g:, 'ale_lsp_suggestions', 0)
+
 " This flag can be set to 1 to enable automatically fixing files on save.
 let g:ale_fix_on_save = get(g:, 'ale_fix_on_save', 0)
 
@@ -150,11 +153,14 @@ let g:ale_hover_to_floating_preview = get(g:, 'ale_hover_to_floating_preview', 0
 " Detail uses floating windows in Neovim
 let g:ale_detail_to_floating_preview = get(g:, 'ale_detail_to_floating_preview', 0)
 
+<<<<<<< HEAD
+=======
 " Border setting for floating preview windows in Neovim
 " The element in the list presents - horizontal, top, top-left, top-right,
 " bottom-right and bottom-left
 let g:ale_floating_window_border = get(g:, 'ale_floating_window_border', ['|', '-', '+', '+', '+', '+'])
 
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
 " This flag can be set to 0 to disable warnings for trailing whitespace
 let g:ale_warn_about_trailing_whitespace = get(g:, 'ale_warn_about_trailing_whitespace', 1)
 " This flag can be set to 0 to disable warnings for trailing blank lines

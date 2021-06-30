@@ -14,17 +14,10 @@ function! nerdtree#ui_glue#createDefaultBindings() abort
     call NERDTreeAddKeyMap({ 'key': '<2-LeftMouse>', 'scope': 'Bookmark', 'callback': s.'activateBookmark' })
     call NERDTreeAddKeyMap({ 'key': '<2-LeftMouse>', 'scope': 'all', 'callback': s.'activateAll' })
 
-<<<<<<< HEAD
-    call NERDTreeAddKeyMap({ 'key': g:NERDTreeMapCustomOpen, 'scope':'FileNode', 'callback': s."customOpenFile"})
-    call NERDTreeAddKeyMap({ 'key': g:NERDTreeMapCustomOpen, 'scope':'DirNode', 'callback': s."customOpenDir"})
-    call NERDTreeAddKeyMap({ 'key': g:NERDTreeMapCustomOpen, 'scope':'Bookmark', 'callback': s."customOpenBookmark"})
-    call NERDTreeAddKeyMap({ 'key': g:NERDTreeMapCustomOpen, 'scope':'all', 'callback': s."activateAll" })
-=======
     call NERDTreeAddKeyMap({ 'key': g:NERDTreeMapCustomOpen, 'scope':'FileNode', 'callback': s.'customOpenFile'})
     call NERDTreeAddKeyMap({ 'key': g:NERDTreeMapCustomOpen, 'scope':'DirNode', 'callback': s.'customOpenDir'})
     call NERDTreeAddKeyMap({ 'key': g:NERDTreeMapCustomOpen, 'scope':'Bookmark', 'callback': s.'customOpenBookmark'})
     call NERDTreeAddKeyMap({ 'key': g:NERDTreeMapCustomOpen, 'scope':'all', 'callback': s.'activateAll' })
->>>>>>> 27ad0d07862847896f691309a544a206783c94d6
 
     call NERDTreeAddKeyMap({ 'key': g:NERDTreeMapActivateNode, 'scope': 'DirNode', 'callback': s.'activateDirNode' })
     call NERDTreeAddKeyMap({ 'key': g:NERDTreeMapActivateNode, 'scope': 'FileNode', 'callback': s.'activateFileNode' })
@@ -93,35 +86,20 @@ endfunction
 "============================================================
 
 "FUNCTION: s:customOpenFile() {{{1
-<<<<<<< HEAD
-" Open file node with the "custom" key, initially <CR>.
-function! s:customOpenFile(node)
-=======
 " Open file node with the 'custom' key, initially <CR>.
 function! s:customOpenFile(node) abort
->>>>>>> 27ad0d07862847896f691309a544a206783c94d6
     call a:node.activate(s:initCustomOpenArgs().file)
 endfunction
 
 "FUNCTION: s:customOpenDir() {{{1
-<<<<<<< HEAD
-" Open directory node with the "custom" key, initially <CR>.
-function! s:customOpenDir(node)
-=======
 " Open directory node with the 'custom' key, initially <CR>.
 function! s:customOpenDir(node) abort
->>>>>>> 27ad0d07862847896f691309a544a206783c94d6
     call s:activateDirNode(a:node, s:initCustomOpenArgs().dir)
 endfunction
 
 "FUNCTION: s:customOpenBookmark() {{{1
-<<<<<<< HEAD
-" Open bookmark node with the "custom" key, initially <CR>.
-function! s:customOpenBookmark(node)
-=======
 " Open bookmark node with the 'custom' key, initially <CR>.
 function! s:customOpenBookmark(node) abort
->>>>>>> 27ad0d07862847896f691309a544a206783c94d6
     if a:node.path.isDirectory
         call a:node.activate(b:NERDTree, s:initCustomOpenArgs().dir)
     else
@@ -131,6 +109,11 @@ endfunction
 
 "FUNCTION: s:initCustomOpenArgs() {{{1
 <<<<<<< HEAD
+<<<<<<< HEAD
+function! s:initCustomOpenArgs() abort
+=======
+=======
+>>>>>>> 7d3bd53d7cd0030a6e49a53fb897514d78de3437
 <<<<<<< HEAD
 " Make sure NERDTreeCustomOpenArgs has needed keys
 <<<<<<< HEAD
@@ -142,9 +125,13 @@ function! s:initCustomOpenArgs() abort
     return extend(g:NERDTreeCustomOpenArgs, {'file':{'reuse': 'all', 'where': 'p'}, 'dir':{}}, 'keep')
 =======
 function! s:initCustomOpenArgs() abort
+<<<<<<< HEAD
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
+=======
 =======
 function! s:initCustomOpenArgs() abort
 >>>>>>> master
+>>>>>>> 7d3bd53d7cd0030a6e49a53fb897514d78de3437
     let l:defaultOpenArgs = {'file': {'reuse': 'all', 'where': 'p', 'keepopen':!nerdtree#closeTreeOnOpen()}, 'dir': {}}
     try
         let g:NERDTreeCustomOpenArgs = get(g:, 'NERDTreeCustomOpenArgs', {})
@@ -156,9 +143,15 @@ function! s:initCustomOpenArgs() abort
         return g:NERDTreeCustomOpenArgs
     endtry
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 597b7acdc0316524c7c65c79d4dc9bf3f5cfce70
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
+=======
 >>>>>>> 597b7acdc0316524c7c65c79d4dc9bf3f5cfce70
 =======
 >>>>>>> master
+>>>>>>> 7d3bd53d7cd0030a6e49a53fb897514d78de3437
 endfunction
 
 "FUNCTION: s:activateAll() {{{1
@@ -171,11 +164,7 @@ endfunction
 
 " FUNCTION: s:activateDirNode(directoryNode, options) {{{1
 " Open a directory with optional options
-<<<<<<< HEAD
-function! s:activateDirNode(directoryNode, ...)
-=======
 function! s:activateDirNode(directoryNode, ...) abort
->>>>>>> 27ad0d07862847896f691309a544a206783c94d6
 
     if a:directoryNode.isRoot() && a:directoryNode.isOpen
         call nerdtree#echo('cannot close tree root')
@@ -616,11 +605,15 @@ endfunction
 
 " FUNCTION: s:previewBookmark(bookmark) {{{1
 function! s:previewBookmark(bookmark) abort
+<<<<<<< HEAD
+    call a:bookmark.activate(b:NERDTree, !a:bookmark.path.isDirectory ? {'stay': 1, 'where': 'p', 'keepopen': 1} : {})
+=======
     if a:bookmark.path.isDirectory
         execute 'NERDTreeFind '.a:bookmark.path.str()
     else
         call a:bookmark.activate(b:NERDTree, {'stay': 1, 'where': 'p', 'keepopen': 1})
     endif
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
 endfunction
 
 "FUNCTION: s:previewNodeCurrent(node) {{{1

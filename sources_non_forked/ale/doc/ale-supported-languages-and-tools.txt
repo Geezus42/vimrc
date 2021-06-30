@@ -153,10 +153,15 @@ Notes:
   * `ruumba`
 * Erlang
   * `SyntaxErl`
+<<<<<<< HEAD
+  * `elvis`!!
+  * `erlc`
+=======
   * `dialyzer`
   * `elvis`!!
   * `erlc`
   * `erlfmt`
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
 * Fish
   * `fish` (-n flag)
   * `fish_indent`
@@ -219,11 +224,15 @@ Notes:
 * HCL
   * `terraform-fmt`
 * HTML
+  * `HTMLHint`
   * `alex`!!
   * `angular`
   * `fecs`
   * `html-beautify`
+<<<<<<< HEAD
+=======
   * `htmlhint`
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
   * `prettier`
   * `proselint`
   * `tidy`
@@ -345,8 +354,11 @@ Notes:
   * `ibm_validator`
   * `prettier`
   * `yamllint`
+<<<<<<< HEAD
+=======
 * Pascal
   * `ptop`
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
 * Pawn
   * `uncrustify`
 * Perl
@@ -394,10 +406,7 @@ Notes:
   * `puppet-lint`
 * PureScript
   * `purescript-language-server`
-<<<<<<< HEAD
-=======
   * `purty`
->>>>>>> 27ad0d07862847896f691309a544a206783c94d6
 * Python
   * `autoimport`
   * `autopep8`

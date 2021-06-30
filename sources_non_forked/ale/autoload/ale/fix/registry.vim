@@ -32,11 +32,14 @@ let s:default_registry = {
 \       'suggested_filetypes': ['python'],
 \       'description': 'Fix PEP8 issues with black.',
 \   },
+<<<<<<< HEAD
+=======
 \   'buildifier': {
 \       'function': 'ale#fixers#buildifier#Fix',
 \       'suggested_filetypes': ['bzl'],
 \       'description': 'Format BUILD and .bzl files with buildifier.',
 \   },
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
 \   'deno': {
 \       'function': 'ale#fixers#deno#Fix',
 \       'suggested_filetypes': ['typescript'],
@@ -112,7 +115,11 @@ let s:default_registry = {
 \   },
 \   'prettier': {
 \       'function': 'ale#fixers#prettier#Fix',
+<<<<<<< HEAD
+\       'suggested_filetypes': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'json5', 'graphql', 'markdown', 'vue', 'html', 'yaml', 'openapi', 'ruby'],
+=======
 \       'suggested_filetypes': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'json5', 'graphql', 'markdown', 'vue', 'svelte', 'html', 'yaml', 'openapi', 'ruby'],
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
 \       'description': 'Apply prettier to a file.',
 \   },
 \   'prettier_eslint': {
@@ -445,6 +452,8 @@ let s:default_registry = {
 \       'function': 'ale#fixers#ormolu#Fix',
 \       'suggested_filetypes': ['haskell'],
 \       'description': 'A formatter for Haskell source code.',
+<<<<<<< HEAD
+=======
 \   },
 \   'ptop': {
 \       'function': 'ale#fixers#ptop#Fix',
@@ -455,6 +464,7 @@ let s:default_registry = {
 \       'function': 'ale#fixers#vfmt#Fix',
 \       'suggested_filetypes': ['v'],
 \       'description': 'A formatter for V source code.',
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
 \   }
 \}
 

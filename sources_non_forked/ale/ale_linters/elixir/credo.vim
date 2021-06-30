@@ -51,6 +51,16 @@ function! ale_linters#elixir#credo#GetConfigFile() abort
     if empty(l:config_file)
         return ''
     endif
+<<<<<<< HEAD
+
+    return ' --config-file ' . l:config_file
+endfunction
+
+function! ale_linters#elixir#credo#GetCommand(buffer) abort
+    let l:project_root = ale#handlers#elixir#FindMixUmbrellaRoot(a:buffer)
+    let l:mode = ale_linters#elixir#credo#GetMode()
+=======
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
 
     return ' --config-file ' . l:config_file
 endfunction

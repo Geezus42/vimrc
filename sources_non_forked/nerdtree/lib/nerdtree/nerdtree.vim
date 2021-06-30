@@ -154,11 +154,7 @@ endfunction
 
 "FUNCTION: s:NERDTree.IsOpen() {{{1
 function! s:NERDTree.IsOpen()
-<<<<<<< HEAD
-    return s:NERDTree.GetWinNum() != -1 || bufname('%') =~# '^' . g:NERDTreeCreator.BufNamePrefix() . '\d\+$'
-=======
     return s:NERDTree.GetWinNum() !=# -1
->>>>>>> 27ad0d07862847896f691309a544a206783c94d6
 endfunction
 
 "FUNCTION: s:NERDTree.isTabTree() {{{1

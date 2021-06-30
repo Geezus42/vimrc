@@ -446,6 +446,11 @@ function! s:open_hunk_preview_window()
       call nvim_buf_set_name(buf, 'gitgutter://hunk-preview')
 
       " Assumes cursor is in original window.
+<<<<<<< HEAD
+      autocmd CursorMoved <buffer> ++once call s:close_hunk_preview_window()
+      if g:gitgutter_close_preview_on_escape
+        nnoremap <buffer> <silent> <Esc> :call <SID>close_hunk_preview_window()<CR>
+=======
       autocmd CursorMoved <buffer> ++once call gitgutter#hunk#close_hunk_preview_window()
 
       if g:gitgutter_close_preview_on_escape
@@ -455,6 +460,7 @@ function! s:open_hunk_preview_window()
         autocmd User GitGutterPreviewClosed silent! nunmap <buffer> <Esc>
         autocmd CursorMoved <buffer> ++once silent! nunmap <buffer> <Esc>
         execute "autocmd WinClosed <buffer=".winbufnr(s:winid)."> doautocmd" s:nomodeline "User GitGutterPreviewClosed"
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
       endif
 
       return
@@ -482,8 +488,19 @@ function! s:open_hunk_preview_window()
   " to an unexpected window when the preview window is closed (#769).
   silent! noautocmd execute g:gitgutter_preview_win_location 'pedit gitgutter://hunk-preview'
   silent! wincmd P
+<<<<<<< HEAD
+  if &previewwindow
+    file gitgutter://hunk-preview
+  else
+    noautocmd execute g:gitgutter_preview_win_location &previewheight 'new'
+    file gitgutter://hunk-preview
+    doautocmd WinEnter
+    set previewwindow
+  endif
+=======
   setlocal statusline=%{''}
   doautocmd WinEnter
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
   if exists('*win_getid')
     let s:winid = win_getid()
   else
@@ -496,6 +513,15 @@ function! s:open_hunk_preview_window()
     " Ensure cursor goes to the expected window.
     nnoremap <buffer> <silent> <Esc> :<C-U>wincmd p<Bar>pclose<CR>
   endif
+endfunction
+
+
+function! s:close_popup_on_escape(winid, key)
+  if a:key == "\<Esc>"
+    call popup_close(a:winid)
+    return 1
+  endif
+  return 0
 endfunction
 
 

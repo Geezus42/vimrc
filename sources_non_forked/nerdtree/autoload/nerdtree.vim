@@ -3,21 +3,6 @@ if exists('g:loaded_nerdtree_autoload')
 endif
 let g:loaded_nerdtree_autoload = 1
 
-<<<<<<< HEAD
-let s:rootNERDTreePath = resolve(expand("<sfile>:p:h:h"))
-function! nerdtree#version(...)
-    let l:changelog = readfile(join([s:rootNERDTreePath, "CHANGELOG.md"], nerdtree#slash()))
-    let l:text = 'Unknown'
-    let l:line = 0
-    while l:line <= len(l:changelog)
-        if l:changelog[l:line] =~ '\d\+\.\d\+'
-            let l:text = substitute(l:changelog[l:line], '.*\(\d\+.\d\+\).*', '\1', '')
-            let l:text .= substitute(l:changelog[l:line+1], '^.\{-}\(\.\d\+\).\{-}:\(.*\)', a:0>0 ? '\1:\2' : '\1', '')
-            break
-        endif
-        let l:line += 1
-    endwhile
-=======
 let s:rootNERDTreePath = resolve(expand('<sfile>:p:h:h'))
 
 "FUNCTION: nerdtree#version(...) {{{1
@@ -39,13 +24,24 @@ function! nerdtree#version(...) abort
         endwhile
     catch
     endtry
->>>>>>> 27ad0d07862847896f691309a544a206783c94d6
     return l:text
 endfunction
 
 " SECTION: General Functions {{{1
 "============================================================
 
+<<<<<<< HEAD
+" FUNCTION: nerdtree#closeTreeOnOpen() {{{2
+function! nerdtree#closeTreeOnOpen() abort
+    return g:NERDTreeQuitOnOpen == 1 || g:NERDTreeQuitOnOpen == 3
+endfunction
+
+" FUNCTION: nerdtree#closeBookmarksOnOpen() {{{2
+function! nerdtree#closeBookmarksOnOpen() abort
+    return g:NERDTreeQuitOnOpen == 2 || g:NERDTreeQuitOnOpen == 3
+endfunction
+
+=======
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -72,14 +68,17 @@ endfunction
 
 <<<<<<< HEAD
 >>>>>>> 597b7acdc0316524c7c65c79d4dc9bf3f5cfce70
+<<<<<<< HEAD
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
+=======
 =======
 >>>>>>> master
+>>>>>>> 7d3bd53d7cd0030a6e49a53fb897514d78de3437
 " FUNCTION: nerdtree#slash() {{{2
 " Return the path separator used by the underlying file system.  Special
 " consideration is taken for the use of the 'shellslash' option on Windows
 " systems.
 function! nerdtree#slash() abort
->>>>>>> master
     if nerdtree#runningWindows()
         if exists('+shellslash') && &shellslash
             return '/'

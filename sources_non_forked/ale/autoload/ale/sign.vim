@@ -52,7 +52,13 @@ endif
 function! ale#sign#SetUpDefaultColumnWithoutErrorsHighlight() abort
     let l:verbose = &verbose
     set verbose=0
+<<<<<<< HEAD
+    redir => l:output
+        0verbose silent highlight SignColumn
+    redir end
+=======
     let l:output = execute('highlight SignColumn', 'silent')
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
     let &verbose = l:verbose
 
     let l:highlight_syntax = join(split(l:output)[2:])

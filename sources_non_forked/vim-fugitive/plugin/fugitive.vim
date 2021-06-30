@@ -291,11 +291,7 @@ function! FugitiveExtractGitDir(path) abort
     silent! exe (haslocaldir() ? 'lcd' : exists(':tcd') && haslocaldir(-1) ? 'tcd' : 'cd') '.'
   endif
   let previous = ""
-<<<<<<< HEAD
-  let env_git_dir = len($GIT_DIR) ? s:Slash(simplify(fnamemodify($GIT_DIR, ':p:s?[\/]$??'))) : ''
-=======
   let env_git_dir = len($GIT_DIR) ? s:Slash(simplify(fnamemodify(FugitiveVimPath($GIT_DIR), ':p:s?[\/]$??'))) : ''
->>>>>>> 27ad0d07862847896f691309a544a206783c94d6
   call s:Tree(env_git_dir)
   while root !=# previous
     if root =~# '\v^//%([^/]+/?)?$'
@@ -416,9 +412,15 @@ if exists(':Gstatus') != 2 && get(g:, 'fugitive_legacy_commands', 1)
 endif
 
 for s:cmd in ['Commit', 'Revert', 'Merge', 'Rebase', 'Pull', 'Push', 'Fetch', 'Blame']
+<<<<<<< HEAD
+  if exists(':G' . tolower(s:cmd)) != 2
+    exe 'command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#' . s:cmd . 'Complete G' . tolower(s:cmd)
+          \ 'echohl WarningMSG|echo ":G' . tolower(s:cmd) . ' is deprecated in favor of :Git ' . tolower(s:cmd) . '\n"|echohl NONE|'
+=======
   if exists(':G' . tolower(s:cmd)) != 2 && get(g:, 'fugitive_legacy_commands', 1)
     exe 'command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#' . s:cmd . 'Complete G' . tolower(s:cmd)
           \ 'echohl WarningMSG|echo ":G' . tolower(s:cmd) . ' is deprecated in favor of :Git ' . tolower(s:cmd) . '"|echohl NONE|'
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
           \ 'exe fugitive#Command(<line1>, <count>, +"<range>", <bang>0, "<mods>", "' . tolower(s:cmd) . ' " . <q-args>)'
   endif
 endfor

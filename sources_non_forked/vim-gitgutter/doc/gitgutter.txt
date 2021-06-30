@@ -177,6 +177,12 @@ Commands for operating on a hunk:~
 
                                               *gitgutter-:GitGutterPreviewHunk*
 :GitGutterPreviewHunk   Preview the hunk the cursor is in.
+<<<<<<< HEAD
+                        Use |:pclose| or |CTRL-W_CTRL-Z| to close the preview
+                        window, or set |g:gitgutter_close_preview_on_escape|
+                        and use <Esc>.
+=======
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
 
                         To stage part of the hunk, move to the preview window,
                         delete any lines you do not want to stage, and

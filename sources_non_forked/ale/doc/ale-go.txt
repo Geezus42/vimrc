@@ -246,6 +246,8 @@ g:ale_go_gopls_init_options                       *g:ale_go_gopls_init_options*
 
   For a full list of supported analyzers, see:
   https://github.com/golang/tools/blob/master/gopls/doc/analyzers.md
+<<<<<<< HEAD
+=======
 
 
 g:ale_go_gopls_use_global                           *g:ale_go_gopls_use_global*
@@ -255,6 +257,7 @@ g:ale_go_gopls_use_global                           *g:ale_go_gopls_use_global*
 
   See |ale-integrations-local-executables|
 
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
 
 ===============================================================================
 govet                                                            *ale-go-govet*

@@ -41,11 +41,7 @@ endif
 if g:NERDTreePath.CopyingSupported()
     call NERDTreeAddMenuItem({'text': '(c)opy the current node', 'shortcut': 'c', 'callback': 'NERDTreeCopyNode'})
 endif
-<<<<<<< HEAD
-call NERDTreeAddMenuItem({'text': (has("clipboard")?'copy (p)ath to clipboard':'print (p)ath to screen'), 'shortcut': 'p', 'callback': 'NERDTreeCopyPath'})
-=======
 call NERDTreeAddMenuItem({'text': (has('clipboard')?'copy (p)ath to clipboard':'print (p)ath to screen'), 'shortcut': 'p', 'callback': 'NERDTreeCopyPath'})
->>>>>>> 27ad0d07862847896f691309a544a206783c94d6
 
 if has('unix') || has('osx')
     call NERDTreeAddMenuItem({'text': '(l)ist the current node', 'shortcut': 'l', 'callback': 'NERDTreeListNode'})
@@ -380,13 +376,6 @@ endfunction
 " FUNCTION: NERDTreeCopyPath() {{{1
 function! NERDTreeCopyPath()
     let l:nodePath = g:NERDTreeFileNode.GetSelected().path.str()
-<<<<<<< HEAD
-    if has("clipboard")
-        let @* = l:nodePath
-        call nerdtree#echo("The path [" . l:nodePath . "] was copied to your clipboard.")
-    else
-        call nerdtree#echo("The full path is: " . l:nodePath)
-=======
     if has('clipboard')
         if &clipboard ==# 'unnamedplus'
             let @+ = l:nodePath
@@ -396,7 +385,6 @@ function! NERDTreeCopyPath()
         call nerdtree#echo('The path [' . l:nodePath . '] was copied to your clipboard.')
     else
         call nerdtree#echo('The full path is: ' . l:nodePath)
->>>>>>> 27ad0d07862847896f691309a544a206783c94d6
     endif
 endfunction
 

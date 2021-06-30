@@ -162,10 +162,15 @@ formatting.
   * [ruumba](https://github.com/ericqweinstein/ruumba)
 * Erlang
   * [SyntaxErl](https://github.com/ten0s/syntaxerl)
+<<<<<<< HEAD
+  * [elvis](https://github.com/inaka/elvis) :floppy_disk:
+  * [erlc](http://erlang.org/doc/man/erlc.html)
+=======
   * [dialyzer](http://erlang.org/doc/man/dialyzer.html)
   * [elvis](https://github.com/inaka/elvis) :floppy_disk:
   * [erlc](http://erlang.org/doc/man/erlc.html)
   * [erlfmt](https://github.com/WhatsApp/erlfmt)
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
 * Fish
   * fish [-n flag](https://linux.die.net/man/1/fish)
   * [fish_indent](https://fishshell.com/docs/current/cmds/fish_indent.html)
@@ -192,7 +197,11 @@ formatting.
   * [golangserver](https://github.com/sourcegraph/go-langserver) :warning:
   * [golint](https://godoc.org/github.com/golang/lint)
   * [gometalinter](https://github.com/alecthomas/gometalinter) :warning: :floppy_disk:
+<<<<<<< HEAD
+  * [gopls](https://github.com/golang/go/wiki/gopls) :warning:
+=======
   * [gopls](https://github.com/golang/go/wiki/gopls)
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
   * [gosimple](https://github.com/dominikh/go-tools/tree/master/cmd/gosimple) :warning: :floppy_disk:
   * [gotype](https://godoc.org/golang.org/x/tools/cmd/gotype) :warning: :floppy_disk:
   * [revive](https://github.com/mgechev/revive) :warning: :floppy_disk:
@@ -228,11 +237,15 @@ formatting.
 * HCL
   * [terraform-fmt](https://github.com/hashicorp/terraform)
 * HTML
+  * [HTMLHint](http://htmlhint.com/)
   * [alex](https://github.com/wooorm/alex) :floppy_disk:
   * [angular](https://www.npmjs.com/package/@angular/language-server)
   * [fecs](http://fecs.baidu.com/)
   * [html-beautify](https://beautifier.io/)
+<<<<<<< HEAD
+=======
   * [htmlhint](http://htmlhint.com/)
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
   * [prettier](https://github.com/prettier/prettier)
   * [proselint](http://proselint.com/)
   * [tidy](http://www.html-tidy.org/)
@@ -354,8 +367,11 @@ formatting.
   * [ibm_validator](https://github.com/IBM/openapi-validator)
   * [prettier](https://github.com/prettier/prettier)
   * [yamllint](https://yamllint.readthedocs.io/)
+<<<<<<< HEAD
+=======
 * Pascal
   * [ptop](https://www.freepascal.org/tools/ptop.var)
+>>>>>>> 1cca3b1df2973096bb9526a0d79c7b93c04e66b3
 * Pawn
   * [uncrustify](https://github.com/uncrustify/uncrustify)
 * Perl
